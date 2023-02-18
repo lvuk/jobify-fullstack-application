@@ -1,0 +1,19 @@
+import { CLEAR_ALERT, DISPLAY_ALERT } from './actions';
+import { initialState } from './appContext';
+
+const reducer = (state, action) => {
+  if (action.type === DISPLAY_ALERT) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: 'Please provide all values!',
+    };
+  }
+  if (action.type === CLEAR_ALERT) {
+    return initialState;
+  }
+  throw new Error(`no such action : ${action.type}`);
+};
+
+export default reducer;

@@ -13,19 +13,25 @@ const initialState = {
 const Register = () => {
   const [values, setValues] = useState(initialState);
   //TODO global state and useNavigate
-  const { isLoading, showAlert } = useAppContext;
+  const { isLoading, showAlert, displayAlert } = useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      displayAlert();
+      return;
+    }
+    console.log(values);
   };
 
   return (
@@ -39,7 +45,6 @@ const Register = () => {
           <FormRow
             type='text'
             name='name'
-            labelText='name'
             value={values.name}
             handleChange={handleChange}
           />
@@ -48,7 +53,6 @@ const Register = () => {
         <FormRow
           type='email'
           name='email'
-          labelText='email'
           value={values.email}
           handleChange={handleChange}
         />
@@ -56,7 +60,6 @@ const Register = () => {
         <FormRow
           type='password'
           name='password'
-          labelText='password'
           value={values.password}
           handleChange={handleChange}
         />
