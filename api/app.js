@@ -1,3 +1,4 @@
+import 'express-async-errors';
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
@@ -9,10 +10,9 @@ import router from './routes/router.js';
 const app = express();
 const port = process.env.PORT || 5000;
 
-//router
 app.use(express.json());
+//router
 app.use('/api/v1', router);
-
 //middleware
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
