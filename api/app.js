@@ -10,6 +10,7 @@ import router from './routes/router.js';
 const app = express();
 const port = process.env.PORT || 5000;
 
+//json
 app.use(express.json());
 //router
 app.use('/api/v1', router);
