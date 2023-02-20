@@ -13,6 +13,9 @@ const port = process.env.PORT || 5000;
 //json
 app.use(express.json());
 //router
+app.get('/api/v1', (req, res) => {
+  res.json({ msg: 'API' });
+});
 app.use('/api/v1', router);
 //middleware
 app.use(notFoundMiddleware);
