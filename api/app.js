@@ -6,10 +6,14 @@ import connectDB from './db/connect.js';
 import errorMiddleware from './middleware/error-handler.js';
 import notFoundMiddleware from './middleware/not-found.js';
 import router from './routes/router.js';
+import morgan from 'morgan';
 
 const app = express();
 const port = process.env.PORT || 5000;
 
+if (process.env.NODE_ENV !== 'production') {
+  app.use(morgan('dev'));
+}
 //json
 app.use(express.json());
 //router
