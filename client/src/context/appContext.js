@@ -22,7 +22,7 @@ const initialState = {
   alertText: '',
   alertTtpe: '',
   user: user ? JSON.parse(user) : null,
-  token: null,
+  token: token || null,
   userLocation: location || '',
   jobLocation: location || '',
 };
