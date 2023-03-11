@@ -7,6 +7,8 @@ import {
   LOGIN_USER_BEGIN,
   LOGIN_USER_ERROR,
   LOGIN_USER_SUCCESS,
+  TOGGLE_SIDEBAR,
+  LOGOUT_USER,
 } from './actions';
 import { initialState } from './appContext';
 
@@ -71,6 +73,20 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: 'danger',
       alertText: action.payload.msg,
+    };
+  }
+  //toggle sidebar
+  if (action.type === TOGGLE_SIDEBAR) {
+    return { ...state, showSidebar: !state.showSidebar };
+  }
+  //logout user
+  if (action.type === LOGOUT_USER) {
+    return {
+      ...initialState,
+      user: null,
+      token: null,
+      userLocation: null,
+      jobLocation: null,
     };
   }
 

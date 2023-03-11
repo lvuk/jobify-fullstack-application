@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Wrapper from '../../assets/wrappers/SharedLayout';
 import { BigSidebar, SmallSidebar, Navbar } from '../../components';
-import { FaHome } from 'react-icons/fa';
 
 const SharedLayout = () => {
   return (
